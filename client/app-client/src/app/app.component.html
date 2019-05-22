@@ -26,4 +26,25 @@
     <mat-card-footer>	
     </mat-card-footer>
   </mat-card>
+
+  <mat-card fxFlex="50"  class="mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>HTTP GET / Error Handling</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul *ngIf="productsErrorHandling">
+          <li *ngFor="let p of productsErrorHandling">{{p.name}}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="getProductsWithErrorHandlingOK()">
+          <mat-icon>swap_vert</mat-icon> Enviar Requisição
+        </button>
+        <button mat-button color="accent" (click)="getProductsWithErrorHandling()">
+            <mat-icon>swap_vert</mat-icon> Enviar Requisição com Erro
+        </button>
+      </mat-card-actions>
+      <mat-card-footer>	
+      </mat-card-footer>
+    </mat-card>
 </div>

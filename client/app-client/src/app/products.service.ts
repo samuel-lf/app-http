@@ -14,4 +14,9 @@ export class ProductsService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.url}/products`);
   }
+
+  getProductsError(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.url}/productserr`);
+  }
+
 }

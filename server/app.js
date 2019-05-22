@@ -29,4 +29,13 @@ app.get('/products', function(req, res){
     );
 });
 
+app.get('/productserr', function(req, res){
+    setTimeout(
+        () => {
+                res.status(500).send({
+                    msg: "Error message from the server"
+                });
+        }, 2000);
+});
+
 app.listen(3000);
