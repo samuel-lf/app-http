@@ -19,4 +19,8 @@ export class ProductsService {
     return this.http.get<Product[]>(`${this.url}/productserr`);
   }
 
+  getProductsDelay(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.url}/productsdelay`);
+  }
+
 }

@@ -40,6 +40,14 @@ export class AppComponent implements OnInit {
   }
 
   getProductsWithErrorHandlingOK() {
-
+    this.productsService.getProductsDelay().subscribe((prods) => {
+      this.productsErrorHandling = prods;
+      const config = new MatSnackBarConfig();
+      config.duration = 2000;
+      config.panelClass = ['snack_ok'];
+      this.snackBar.open('Products Sucess', '', config);
+    }, (error) => {
+      console.log(error);
+    });
   }
 }

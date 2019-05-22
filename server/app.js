@@ -38,4 +38,19 @@ app.get('/productserr', function(req, res){
         }, 2000);
 });
 
+app.get('/productsdelay', function(req, res){
+    setTimeout(
+        () => {
+                Product.find().lean().exec(
+                    (error, prods) => {
+                        if(error){
+                            res.status(500).send(error);
+                        }else{
+                            res.status(200).send(prods);
+                        }
+                    }
+                );
+            }, 2000);
+});
+
 app.listen(3000);
