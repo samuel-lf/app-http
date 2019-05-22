@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-var Product = require('./product.js');
+var Product = require('../models/product.js');
 var Faker = require('faker');
 
 mongoose.connect('mongodb://localhost:27017/http_client', {useNewUrlParser:true});
