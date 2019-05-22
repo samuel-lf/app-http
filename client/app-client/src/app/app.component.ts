@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
 
   simpleReqProductsObs$: Observable<Product[]>;
   productsErrorHandling: Product[];
+  productsLoading: Product[];
+  isLoading = false;
 
   constructor(private productsService: ProductsService, private snackBar: MatSnackBar) {}
 
@@ -48,6 +50,17 @@ export class AppComponent implements OnInit {
       this.snackBar.open('Products Sucess', '', config);
     }, (error) => {
       console.log(error);
+    });
+  }
+
+  getProductsLoading() {
+    this.isLoading = true;
+    this.productsService.getProductsDelay().subscribe((prods) => {
+      this.productsLoading = prods;
+      this.isLoading = false;
+    }, (error) => {
+      console.log(error);
+      this.isLoading = false;
     });
   }
 }

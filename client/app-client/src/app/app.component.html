@@ -4,8 +4,8 @@
 
 <br>
 
-<div fxLayout="row wrap" fxLayoutAlign="space-between start" fxLayoutGap="20px">
-  <mat-card fxFlex="50"  class="mat-elevation-z8">
+<div fxLayout="row wrap" fxLayoutAlign="space-around start" fxLayoutGap="20px">
+  <mat-card fxFlex="30"  class="mat-elevation-z8">
     <mat-card-header>
       <mat-card-title>Requisição HTTP Simples</mat-card-title>
     </mat-card-header>
@@ -27,7 +27,7 @@
     </mat-card-footer>
   </mat-card>
 
-  <mat-card fxFlex="50"  class="mat-elevation-z8">
+  <mat-card fxFlex="20"  class="mat-elevation-z8">
       <mat-card-header>
         <mat-card-title>HTTP GET / Error Handling</mat-card-title>
       </mat-card-header>
@@ -45,6 +45,25 @@
         </button>
       </mat-card-actions>
       <mat-card-footer>	
+      </mat-card-footer>
+    </mat-card>
+
+    <mat-card fxFlex="20"  class="mat-elevation-z8">
+      <mat-card-header>
+        <mat-card-title>HTTP GET / Loading</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <ul *ngIf="productsLoading">
+          <li *ngFor="let p of productsLoading">{{p.name}}</li>
+        </ul>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="getProductsLoading()">
+          <mat-icon>swap_vert</mat-icon> Enviar Requisição
+        </button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>	
       </mat-card-footer>
     </mat-card>
 </div>
