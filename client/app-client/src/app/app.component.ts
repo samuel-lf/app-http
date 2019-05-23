@@ -15,6 +15,8 @@ export class AppComponent implements OnInit {
   productsErrorHandling: Product[];
   productsLoading: Product[];
   isLoading = false;
+  productsIds: Product[];
+
 
   constructor(private productsService: ProductsService, private snackBar: MatSnackBar) {}
 
@@ -61,6 +63,21 @@ export class AppComponent implements OnInit {
     }, (error) => {
       console.log(error);
       this.isLoading = false;
+    });
+  }
+  getProductsIds() {
+    this.productsService.getProductsIds().subscribe(
+      (ids) => {
+        this.productsIds = ids.map(id => ({_id: id, name: '', department: '', price: 0}));
+      });
+  }
+
+  loadName(id: string) {
+    this.productsService.getProductsName(id).subscribe((name) => {
+      let index = this.productsIds.findIndex(p => p._id === id);
+      if (index >= 0) {
+        this.productsIds[index].name = name;
+      }
     });
   }
 }

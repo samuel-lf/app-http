@@ -19,6 +19,7 @@
       true,
       140
     ],
+    "prefer-const": false,
     "member-access": false,
     "member-ordering": [
       true,

@@ -53,4 +53,32 @@ app.get('/productsdelay', function(req, res){
             }, 2000);
 });
 
+app.get('/products_ids', function(req, res){
+    Product.find().lean().exec(
+        (error, prods) => {
+            if(error){
+                res.status(500).send(error);
+            }else{
+                res.status(200).send(prods.map(p => p._id));
+            }
+        }
+    );
+});
+
+
+app.get('/products/name/:id', function(req, res){
+    const id = req.params.id
+    Product.findById(id, 
+        (error, prod) => {
+            if(error){
+                res.status(500).send(error);
+            } else if (!prod) {
+                res.status(404).send({});
+            } else{
+                res.status(200).send(prod.name);
+            }
+        }
+    );
+});
+
 app.listen(3000);

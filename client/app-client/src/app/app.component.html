@@ -66,4 +66,29 @@
         <mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>	
       </mat-card-footer>
     </mat-card>
+
+    <mat-card fxFlex="20"  class="mat-elevation-z8">
+        <mat-card-header>
+          <mat-card-title>Obtendo texto do servidor</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let p of productsIds; let i = index">
+              <mat-icon mat-list-icon>shop</mat-icon>
+              <h4 mat-line *ngIf="p.name != ''">{{p.name}}</h4>
+              <h4 mat-line *ngIf="p.name == ''">Product {{i}}</h4>
+              <button mat-icon-button color="primary" (click)="loadName(p._id)" *ngIf="p.name == ''">
+                <mat-icon>refresh</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="getProductsIds()">
+            <mat-icon>swap_vert</mat-icon> Enviar Requisição
+          </button>
+        </mat-card-actions>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card>
 </div>
